@@ -8,9 +8,10 @@ header, main {
 
 h1 {
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     margin: 20px 0;
+    color: #b82da2;
 }
 
 h2 {
@@ -30,10 +31,35 @@ h2 {
     display: block;
     padding: 5px;
     margin-bottom: 2px;
-    border: 1px solid black;
-    background: white;
+    background: #b82da2;
     cursor: -webkit-grab;
     cursor: grab;
+    
+    border-radius: 100px;
+    color: white;
+    font-family: 'Helvetica Neue';
+}
+
+.girl {
+    position: relative;
+}
+
+.girl .info-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: "Times New Roman";
+    font-style: italic;
+    font-size: 18px;
+    border: 1px solid white;
+    width: 1em;
+    text-align: center;
+    border-radius: 100px;
+}
+.girl .info-button:hover {
+    color: #b82da2;
+    background: white;
+    cursor: pointer;
 }
 
 .my-girls {
@@ -44,6 +70,12 @@ h2 {
 	counter-increment: girls-count;
     display: inline-block;
     width: 2em;
+    background: white;
+    color: black;
+    border-radius: 100px;
+    text-align: center;
+    padding: 8px 0;
+    margin-right: 10px;
 }
 
 .permalink-holder {

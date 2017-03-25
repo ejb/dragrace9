@@ -42,13 +42,16 @@ function updateApp(girls) {
 }
 
 function buildMarkup(girls) {
+    var template = $('#template').html();
+    Mustache.parse(template);    
     var list = girls.map(function(girl) {
         var outcome = '';
         if (girl.outcome > 0) {
             outcome = '(' + girl.outcome + 'th place)';
         }
+        girl.outcomeFmt = outcome;
         console.log(girl, girl.outcome, outcome)
-        return '<li class="girl" data-id="' + girl.id +'">' + girl.contestant + ' ' + outcome + '</li>';
+        return Mustache.render(template, girl);
     });
     return list.join('');
 }
