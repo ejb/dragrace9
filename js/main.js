@@ -7,7 +7,7 @@ function ladiesStartYourEngines(girls) {
     
     girls.forEach(function(girl, i) {
         girl.id = girl.rowNumber;
-        girl.code = 'rkezqtxlnpmwa'[i];
+        girl.code = 'rkezqtxlnpmwayd'[i];
     });
     
     if (window.location.hash) {
@@ -23,21 +23,32 @@ function ladiesStartYourEngines(girls) {
     var drag = dragula([$('.my-girls')[0]]);
     drag.on('dragend', function() {
         girls = bringBackMyGirls(girls);
-        var code = girls.map(function(girl) {
-            return girl.code;
-        }).join('');
-        window.location.hash = code;
-        updatePermalink();
+        updateApp(girls);
         // updateScores(girls);
     });
 
+    updateApp(girls);    
+}
+
+function updateApp(girls) {
+    var code = girls.map(function(girl) {
+        return girl.code;
+    }).join('');
+    window.location.hash = code;
     updatePermalink();
+    
+    console.log(girls)
     
 }
 
 function buildMarkup(girls) {
     var list = girls.map(function(girl) {
-        return '<li class="girl" data-id="' + girl.id +'">' + girl.contestant + '</li>';
+        var outcome = '';
+        if (girl.outcome > 0) {
+            outcome = '(' + girl.outcome + 'th place)';
+        }
+        console.log(girl, girl.outcome, outcome)
+        return '<li class="girl" data-id="' + girl.id +'">' + girl.contestant + ' ' + outcome + '</li>';
     });
     return list.join('');
 }
