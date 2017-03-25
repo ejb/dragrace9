@@ -27,10 +27,14 @@ function ladiesStartYourEngines(girls) {
     drag.on('dragend', function() {
         girls = bringBackMyGirls(girls);
         updateApp(girls);
-        // updateScores(girls);
+        updateScores(girls);
     });
 
-    updateApp(girls);    
+    updateApp(girls);   
+    updateScores(girls); 
+    
+    $('.loading-screen').remove();
+    $('main').show();
 }
 
 function updateApp(girls) {
@@ -39,8 +43,6 @@ function updateApp(girls) {
     }).join('');
     window.location.hash = code;
     updatePermalink();
-    
-    console.log(girls)
     
 }
 
@@ -53,7 +55,6 @@ function buildMarkup(girls) {
             outcome = '(' + girl.outcome + 'th place)';
         }
         girl.outcomeFmt = outcome;
-        console.log(girl, girl.outcome, outcome)
         return Mustache.render(template, girl);
     });
     return list.join('');
@@ -78,4 +79,17 @@ function orderByCode(girls, code) {
             return girl.code === char;
         })[0];
     });
+}
+
+function updateScores(girls) {
+    console.log(girls);
+    var totalPoints = 0;
+    girls.forEach(function(girl, i) {
+        if (girl.outcome > 0) {
+            var points = 13 - Math.abs(girl.outcome - i - 1);
+            $('.girl[data-id="' + girl.id + '"] .points-gained').text(points + ' points');
+            totalPoints += points;
+        }
+    });
+    $('.points').text(totalPoints);
 }

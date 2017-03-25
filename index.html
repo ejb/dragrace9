@@ -22,13 +22,20 @@
 
         <header>
             <h1>Drag Race Season 9 Brackets</h1>
-            <p>Order the girls below with your winner as #1 and your first elimination as #14.</p>
         </header>
+        
+        <section class="loading-screen">
+            Loading...
+        </section>
 
         <main>
+            
+            <p>Order the girls below with your winner as #1 and your first elimination as #14.</p>
+
+            <p class="points-wrapper">Points so far: <span class="points"></span></p>
                         
             <ol class="my-girls"></ol>
-            
+                        
             <div class="permalink-holder">
                 <p>Link to this bracket: <input class="permalink" readOnly /></p>
                 <p>Bookmark this link, send it to friends or post it somewhere public as proof of your picks. The new score will be available to view at this page after each show.</p>
@@ -38,7 +45,7 @@
                 
                 <h2>The Rules</h2>
                 
-                <p>If you guess a contestant's place in the rankings correctly, you get 14 points. If your guess is off by one, you get 13 points, and so on.</p>
+                <p>If you guess a contestant's place in the rankings correctly, you get 13 points. If your guess is off by one, you get 14 points, and so on.</p>
 
             </section>
             
@@ -73,12 +80,12 @@
         
             <li class="girl" data-id="{{id}}">
                 {{contestant}} {{outcomeFmt}}
+
+                <div class="points-gained"></div>
                 <div class="info-button">i</div>
                 
                 <div class="bio">
                     <p><strong>Hometown:</strong> {{hometown}}</p>
-                
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
             </li>
         
