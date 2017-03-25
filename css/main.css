@@ -35,7 +35,7 @@ h2 {
     cursor: -webkit-grab;
     cursor: grab;
     
-    border-radius: 100px;
+    border-radius: 20px;
     color: white;
     font-family: 'Helvetica Neue';
 }
@@ -56,10 +56,24 @@ h2 {
     text-align: center;
     border-radius: 100px;
 }
-.girl .info-button:hover {
+.girl:hover .info-button {
     color: #b82da2;
     background: white;
-    cursor: pointer;
+}
+
+.girl .bio {
+    display: none;
+    margin-left: 45px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.girl .bio strong {
+    font-weight: 500;
+}
+
+.girl .bio p {
+    margin-bottom: 0.8em;
 }
 
 .my-girls {

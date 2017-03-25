@@ -19,6 +19,9 @@ function ladiesStartYourEngines(girls) {
     
     var markup = buildMarkup(girls);
     $('.my-girls').html(markup);
+    $('.girl').click(function() {
+        $(this).find('.bio').toggle();
+    });
     
     var drag = dragula([$('.my-girls')[0]]);
     drag.on('dragend', function() {
