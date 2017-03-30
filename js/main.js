@@ -8,6 +8,7 @@ function ladiesStartYourEngines(girls) {
     girls.forEach(function(girl, i) {
         girl.id = girl.rowNumber;
         girl.code = 'rkezqtxlnpmwayd'[i];
+        girl.firstName = girl.contestant.split(' ')[0];
     });
     
     if (window.location.hash) {

@@ -21,7 +21,7 @@
         <![endif]-->
 
         <header>
-            <h1>Drag Race Season 9 Brackets</h1>
+            <h1>Drag Race Season 9 Bracket</h1>
         </header>
         
         <section class="loading-screen">
@@ -30,7 +30,7 @@
 
         <main>
             
-            <p>Order the girls below with your winner as #1 and your first elimination as #14.</p>
+            <p>Order the girls below with your winner as #1 and your first elimination as #14. Then bookmark this page and come back after each episode for your updated score.</p>
 
             <p class="points-wrapper">Points so far: <span class="points"></span></p>
                         
@@ -47,11 +47,13 @@
                 
                 <p>If you guess a contestant's place in the rankings correctly, you get 13 points. If your guess is off by one, you get 14 points, and so on.</p>
 
+                <p>By the way, there is no central database of scores. So we won’t be crowning a winner, baby.</p>
+
             </section>
             
             <footer>
                 
-                <p>Made by Elliot and Beau</p>
+                <p>Made by Elliot and Beau.</p>
                 
             </footer>
 
@@ -79,14 +81,23 @@
         <script id="template" type="x-tmpl-mustache">
         
             <li class="girl" data-id="{{id}}">
-                {{contestant}} {{outcomeFmt}}
+                <span class="contestant-name">{{contestant}}</span> {{outcomeFmt}}
 
                 <div class="points-gained"></div>
                 <div class="info-button">i</div>
                 
+                {{#hometown}}
                 <div class="bio">
-                    <p><strong>Hometown:</strong> {{hometown}}</p>
+                    <img src="./img/{{firstName}}.jpg" />
+                    <p>a.k.a. {{name}}, {{age}}, from {{hometown}}</p>
+                    <p>Watch video: <a href="{{meetthequeenvideo}}">Meet The Queen</a></p>
                 </div>
+                {{/hometown}}
+                {{^hometown}}
+                <div class="bio">
+                    <p>This contestant was introduced at the end of the first episode, but their identity has yet to be revealed.</p>
+                    </div>
+                {{/hometown}}
             </li>
         
         </script>
