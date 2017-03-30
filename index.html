@@ -41,7 +41,9 @@
                 
                 <h2>The Rules</h2>
                 
-                <p>If you guess a contestant's place in the rankings correctly, you get 13 points. If your guess is off by one, you get 14 points, and so on.</p>
+                <p>If you guess a contestant's place in the rankings correctly, you get 13 points. If your guess is off by one, you get 12 points, and so on.</p>
+
+                <p>We expect the winner to be selected from a top three, which is why there are two second places.</p>
 
                 <p>By the way, there is no central database of scores. So we won’t be crowning a winner, baby.</p>
 
@@ -67,7 +69,7 @@
         <script id="template" type="x-tmpl-mustache">
         
             <li class="girl" data-id="{{id}}">
-                <span class="contestant-name">{{contestant}}</span> {{outcomeFmt}}
+                <span class="contestant-name">{{contestant}}</span> {{{outcomeFmt}}}
 
                 <div class="points-gained"></div>
                 <div class="info-button">i</div>

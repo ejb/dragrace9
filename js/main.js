@@ -47,13 +47,26 @@ function updateApp(girls) {
     
 }
 
+function getOrdinalSuffix(n) {
+    if (n == 1) {
+        return 'st';
+    }
+    if (n == 2) {
+        return 'nd';
+    }
+    if (n == 3) {
+        return 'rd';
+    }
+    return 'th';
+}
+
 function buildMarkup(girls) {
     var template = $('#template').html();
     Mustache.parse(template);    
     var list = girls.map(function(girl) {
         var outcome = '';
         if (girl.outcome > 0) {
-            outcome = '(' + girl.outcome + 'th place)';
+            outcome = '(' + girl.outcome + '<sup>' + getOrdinalSuffix(girl.outcome) + '</sup> place)';
         }
         girl.outcomeFmt = outcome;
         return Mustache.render(template, girl);
@@ -83,10 +96,16 @@ function orderByCode(girls, code) {
 }
 
 function updateScores(girls) {
-    console.log(girls);
     var totalPoints = 0;
     girls.forEach(function(girl, i) {
         if (girl.outcome > 0) {
+            var outcome = girl.outcome;
+            if (i === 2) {
+                i = 1;
+            }
+            if (outcome === 3) {
+                outcome = 2;
+            }
             var points = 13 - Math.abs(girl.outcome - i - 1);
             $('.girl[data-id="' + girl.id + '"] .points-gained').text(points + ' points');
             totalPoints += points;
