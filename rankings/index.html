@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Drag Race Season 9 Bracket</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header>
+            <h1>Drag Race Season 9 Bracket</h1>
+        </header>
+        
+        <section class="loading-screen">
+            Loading...
+        </section>
+
+        <main>
+                       
+        </main>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script type='text/javascript' src='../js/vendor/tabletop.js'></script>
+        <script type='text/javascript' src='../js/vendor/dragula.js'></script>
+        <script type='text/javascript' src='../js/vendor/mustache.js'></script>
+
+        <script src="../js/plugins.js"></script>
+        <script src="../js/shared.js"></script>
+        <script src="./rankings.js"></script>
+            
+        <script id="template" type="x-tmpl-mustache">
+        
+            <table class="rankings">
+                <tbody>
+                {{#.}}
+                    <tr>
+                        <td>{{place}}</td>
+                        <td><a href="../#{{hash}}">{{name}}</a></td>
+                        <td>{{score}} points</td>
+                    </tr>
+                {{/.}}
+                </tbody>
+            </table>
+        
+        </script>
+        
+    </body>
+</html>

@@ -1,16 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var URL = "1nWEoOzLyhNr60SZYLvSZRNqBIvuenFDYHjmrNjRnqrg"
-    Tabletop.init( { key: URL, callback: ladiesStartYourEngines, simpleSheet: true } )
+    getData(ladiesStartYourEngines);
 });
 
 function ladiesStartYourEngines(girls) {
-    
-    girls.forEach(function(girl, i) {
-        girl.id = girl.rowNumber;
-        girl.code = 'rkezqtxlnpmwayd'[i];
-        girl.firstName = girl.contestant.split(' ')[0];
-    });
-    
+        
     if (window.location.hash) {
         var hash = window.location.hash.replace('#', '');
         girls = orderByCode(girls, hash);
@@ -28,11 +21,11 @@ function ladiesStartYourEngines(girls) {
     drag.on('dragend', function() {
         girls = bringBackMyGirls(girls);
         updateApp(girls);
-        updateScores(girls);
+        $('.points').text(calcScore(girls));
     });
 
     updateApp(girls);   
-    updateScores(girls); 
+    $('.points').text(calcScore(girls));
     
     $('.loading-screen').remove();
     $('main').show();
@@ -47,18 +40,17 @@ function updateApp(girls) {
     
 }
 
-function getOrdinalSuffix(n) {
-    if (n == 1) {
-        return 'st';
-    }
-    if (n == 2) {
-        return 'nd';
-    }
-    if (n == 3) {
-        return 'rd';
-    }
-    return 'th';
+
+
+function bringBackMyGirls(girls) {
+    return Array.from(document.querySelectorAll('.girl')).map(function(el) {
+        var id = +el.getAttribute('data-id');
+        return girls.filter(function(girl) {
+            return girl.id === id;
+        })[0];
+    });
 }
+
 
 function buildMarkup(girls) {
     var template = $('#template').html();
@@ -74,42 +66,7 @@ function buildMarkup(girls) {
     return list.join('');
 }
 
-function bringBackMyGirls(girls) {
-    return Array.from(document.querySelectorAll('.girl')).map(function(el) {
-        var id = +el.getAttribute('data-id');
-        return girls.filter(function(girl) {
-            return girl.id === id;
-        })[0];
-    });
-}
 
 function updatePermalink() {
     $('.permalink').val(window.location.href);
-}
-
-function orderByCode(girls, code) {
-    return code.split('').map(function(char) {
-        return girls.filter(function(girl) {
-            return girl.code === char;
-        })[0];
-    });
-}
-
-function updateScores(girls) {
-    var totalPoints = 0;
-    girls.forEach(function(girl, i) {
-        if (girl.outcome > 0) {
-            var outcome = girl.outcome;
-            if (i === 2) {
-                i = 1;
-            }
-            if (outcome === 3) {
-                outcome = 2;
-            }
-            var points = 13 - Math.abs(girl.outcome - i - 1);
-            $('.girl[data-id="' + girl.id + '"] .points-gained').text(points + ' points');
-            totalPoints += points;
-        }
-    });
-    $('.points').text(totalPoints);
 }

@@ -178,3 +178,13 @@ footer {
     font-size: 14px;
     margin-bottom: 40px;
 }
+
+.rankings {
+    width: 100%;
+}
+.rankings td {
+    padding: 10px 0;
+}
+.rankings tr {
+    border-top: 1px solid #eee;
+}
